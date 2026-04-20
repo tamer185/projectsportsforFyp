@@ -1,0 +1,36 @@
+{
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.11",
+      "maxDuration": 30
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.py"
+    },
+    {
+      "src": "/admin",
+      "dest": "/static/admin.html"
+    },
+    {
+      "src": "/admin.html",
+      "dest": "/static/admin.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/static/index.html"
+    }
+  ],
+  "builds": [
+    {
+      "src": "api/index.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "static/*",
+      "use": "@vercel/static"
+    }
+  ]
+}
